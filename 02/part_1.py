@@ -14,9 +14,6 @@ def compute(intcode, index):
     index_first_num = intcode[index+1]
     index_second_num = intcode[index+2]
     insert_at = intcode[index+3]
-
-    print(index_first_num, index_second_num, insert_at)
-    print(intcode[index])
         
     # Addition code 
     if intcode[index] == 1:
