@@ -37,7 +37,6 @@ def main(intcode):
 
     # Loop until we hit a 99
     while intcode[index] != 99:
-        print("Computing...")
         intcode = compute(intcode, index)  # Compute this chunk of intcode
         index += 4  # Look at the next chunk of intcode
     print(intcode[0])
