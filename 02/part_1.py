@@ -5,41 +5,42 @@
 - 1,1,1,4,99,5,6,0,99 becomes 30,1,1,4,2,5,6,0,99.
 """
 
-# Imports
-
 
 def compute(intcode, index):
     # If we quit
     if intcode[index] == 99:
         print("Let's get outa here!")
 
+    # Get indexes
     index_first_num = intcode[index+1]
     index_second_num = intcode[index+2]
     insert_at = intcode[index+3]
         
+    # Addition code 
     if intcode[index] == 1:
         intcode[insert_at] = intcode[index_first_num] + intcode[index_second_num]
         return intcode
 
-    # If we multiply
+    # Multiplication code
     elif intcode[index] == 2:
         intcode[insert_at] = intcode[index_first_num] * intcode[index_second_num]
         return intcode
 
+    # Something's gone wrong...
     else:
         raise Exception("Operator not recognised...")
 
-    return intcode, index
+    return intcode
 
 
 def main(intcode):
-    index = 0 
+    index = 0  # Start at position 0
+
+    # Loop until we hit a 99
     while intcode[index] != 99:
-        print("Computing...")
-        intcode = compute(intcode, index)
-        index += 4
-    print("Hit 99, stopping")
-    print(intcode)
+        intcode = compute(intcode, index)  # Compute this chunk of intcode
+        index += 4  # Look at the next chunk of intcode
+    print(intcode[0])
 
 
 if __name__ == "__main__":
